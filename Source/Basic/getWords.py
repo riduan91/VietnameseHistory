@@ -22,6 +22,7 @@ VNFalsePropNouns = ['ND', 'Mùa', 'Ngày', 'Tháng', 'Năm', 'Bọn', 'Lúc', '�
                     'Đến', 'Quyển', 'Người', 'Để', 'Nhưng', 'Bổ', 'Chb', 'Chức', 'Do', 'Dân',
                     'Em', 'Giáng', 'Giặc', 'Giết', 'Nay', 'Sau', 'Theo', 'Tên', 'Tước', 'Tượng',
                     'Việc', 'Vợ', 'Đều', 'Đặt', 'Đầu', 'Đất']
+                    
 VNFalseUnpropNouns = ['vương', 'hầu', 'sứ', 'đế', 'công']
 
 VNHistoryIdentities = ['Chùa', 'Núi', 'Sông', 'Phủ', 'Hồ', 'Thành', 'Thánh', 'Động', 'Đồi', 
@@ -31,7 +32,7 @@ VNHistoryIdentities = ['Chùa', 'Núi', 'Sông', 'Phủ', 'Hồ', 'Thành', 'Th�
 
 def isVNCapital(word):
     '''
-    Kiểm tra một tiếng được viết hoa trong tiếng Việt
+        Kiểm tra một tiếng được viết hoa trong tiếng Việt
     '''
     if len(word) <= 0:
         return False
@@ -49,7 +50,7 @@ def isVNCapital(word):
 
 def retrieveProperNounsFromSentence(sentence):
     '''
-    Lấy ra tất cả các danh từ riêng trong một câu
+        Đọc một câu và trả lại list các danh từ riêng trong câu
     '''
     propNounsList = []
     #words = re.split(" |, |\. |\: |; ", sentence)
@@ -77,6 +78,7 @@ def retrieveProperNounsFromSentence(sentence):
 
 def retrieveProperNounsFromFile(myfile):
     '''
+        Trả lại list các danh từ riêng trong một văn bản (bằng cách gọi retrieveProperNounsFromSentence cho từng câu) 
     '''
     myfile = open(myfile, 'r')
     text = myfile.read()
@@ -89,6 +91,7 @@ def retrieveProperNounsFromFile(myfile):
 
 def retrieveProperNounsFromFileByLine(myfile):
     '''
+        Trả lại một file gồm các danh từ riêng, mỗi hàng là list các danh từ riêng trong câu tương ứng ở hàng ấy
     '''
     myfile = open(myfile, 'r')
     text = myfile.read()
@@ -101,10 +104,14 @@ def retrieveProperNounsFromFileByLine(myfile):
 
 def clean(word):
     '''
+        Xoá các kí tự bất thường gắn với từ
     '''
     return re.sub("\)|\.|[0-9]|\"|\]|,|;|:|\+|\?|\!|\-", "", word)
 
 def reformat(myfile, mynewfile):
+    '''
+        Định dạng sạch lại file copy paste từ nguồn
+    '''
     text = open(myfile, 'r').read()
     text = re.sub("(Quyển.+[IVXLCDM]+)", r"\1.", text)
     text = re.sub("(Quyển.+[IVXLCDM]+)\.\.", r"\1.", text)
@@ -121,6 +128,9 @@ def reformat(myfile, mynewfile):
     f.close()
 
 def getNotice(myfile, myfileupdated, mynoticefile):
+    '''
+        Xoá các dòng chú thích
+    '''
     lines = open(myfile, 'r').readlines()
     f = open(mynoticefile, 'w')
     g = open(myfileupdated, 'w')
@@ -131,8 +141,3 @@ def getNotice(myfile, myfileupdated, mynoticefile):
             g.write(line)
     f.close()
     g.close()
-    
-
-
-
-                
