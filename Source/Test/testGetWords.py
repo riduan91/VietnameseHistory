@@ -49,7 +49,7 @@ def test3():
 def test4():
     print "Test 4:"
     getWords.reformat(DATA_FOLDER + 'Khamdinhvietsuthonggiamcuongmuc.txt', DATA_FOLDER + 'Khamdinhvietsuthonggiamcuongmuc_updated.txt')
-    getWords.getNotice(DATA_FOLDER + 'Khamdinhvietsuthonggiamcuongmuc_updated.txt', DATA_FOLDER + 'Khamdinhvietsuthonggiamcuongmuc_reupdated.txt', 'Khamdinhvietsuthonggiamcuongmuc_notice.txt')
+    getWords.getNotice(DATA_FOLDER + 'Khamdinhvietsuthonggiamcuongmuc_updated.txt', DATA_FOLDER + 'Khamdinhvietsuthonggiamcuongmuc_reupdated.txt', DATA_FOLDER + 'Khamdinhvietsuthonggiamcuongmuc_notice.txt')
     getWords.reformat(DATA_FOLDER + 'Khamdinhvietsuthonggiamcuongmuc_reupdated.txt', DATA_FOLDER + 'Khamdinhvietsuthonggiamcuongmuc_updated.txt')
     print "Test 4 finished."
     print "------" 
@@ -71,4 +71,4 @@ def test5():
 #test3()
 #test4()
 #test3()
-test5()
+#test5()
